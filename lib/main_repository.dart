@@ -1,11 +1,14 @@
 import 'package:surfing_spots/surfing_spot.dart';
 
-class MainRepository {
+abstract class MainRepository {
+  Future<List<SurfingSpot>> fetch();
+}
 
-  Stream<List<SurfingSpot>> get surfingSpots async* {
-    yield List.generate(8, (index) =>
-        SurfingSpot("Title $index", "Description $index")
-    );
+class FakeMainRepository extends MainRepository {
+  @override
+  fetch() async {
+    Future.delayed(const Duration(seconds: 3));
+    return List.generate(
+        8, (index) => SurfingSpot("Title $index", "Description $index"));
   }
-
 }
