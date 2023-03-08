@@ -9,6 +9,6 @@ class FakeMainRepository extends MainRepository {
   fetch() async {
     await Future.delayed(const Duration(seconds: 3));
     return List.generate(
-        8, (index) => SurfingSpot("Title $index", "Description $index"));
+        8, (index) => SurfingSpot("Title $index", "Description $index", "https://www.info-turismo.it/wp-content/uploads/2021/01/shutterstock_1020405811.jpg"));
   }
 }
