@@ -9,10 +9,13 @@ class MainViewModel extends ChangeNotifier {
 
   final MainRepository repository;
 
-  List<SurfingSpot> surfingSpotList = List.empty();
+  List<SurfingSpot> surfingSpotList = List.empty(growable: true);
 
   Future<void> fetch() async {
-    surfingSpotList = await repository.fetch();
+    surfingSpotList.clear();
+    notifyListeners();
+    List<SurfingSpot> fetched = await repository.fetch();
+    surfingSpotList.addAll(fetched);
     notifyListeners();
   }
 
