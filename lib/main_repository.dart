@@ -7,7 +7,7 @@ abstract class MainRepository {
 class FakeMainRepository extends MainRepository {
   @override
   fetch() async {
-    Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     return List.generate(
         8, (index) => SurfingSpot("Title $index", "Description $index"));
   }

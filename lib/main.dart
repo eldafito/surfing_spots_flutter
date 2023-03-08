@@ -15,19 +15,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (_) => MainViewModel(repository: locator<MainRepository>()),
-          )
-        ],
+    return ChangeNotifierProvider<MainViewModel>(
+        create: (BuildContext context) =>
+            MainViewModel(repository: locator<MainRepository>()),
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: const MainScreen()
-        )
-    );
+            home: const MainScreen()));
   }
 }
